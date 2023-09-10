@@ -1,13 +1,16 @@
 const express = require("express");
 const { ApolloServer } = require("apollo-server-express");
+const mongoose = require("mongoose");
 const path = require("path");
 const { authMiddleware } = require("./utils/auth");
-const { typeDefs, resolvers } = require("./schemas");
+const { typeDefs } = require("./schemas");
+const { resolvers } = require("./schemas");
+// add resolvers to this line
 const db = require("./config/connection");
 const routes = require("./routes");
 
-const app = express();
 const PORT = process.env.PORT || 5001;
+const app = express();
 
 const server = new ApolloServer({
   typeDefs,
